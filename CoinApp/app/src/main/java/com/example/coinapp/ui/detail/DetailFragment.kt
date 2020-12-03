@@ -52,8 +52,7 @@ class DetailFragment : Fragment() {
                 is GenericResult.Success -> {
                     CoinProgressDialog.close()
                     binding.tabLayout.tabGravity = TabLayout.GRAVITY_FILL
-                    val adapter = ViewPagerAdapter(requireContext(),, tabLayout.tabCount)
-                    viewPager.adapter = adapter
+          
                 }
 
                 is GenericResult.Failure -> {

@@ -27,8 +27,8 @@ import kotlinx.android.synthetic.main.fragment_detail.*
 class DetailFragment : Fragment() {
 
     lateinit var binding: FragmentDetailBinding
-    lateinit var tabLayout: TabLayout
-    lateinit var viewPager: ViewPager
+     lateinit var tabLayout: TabLayout
+    private lateinit var pagerAdapter: ViewPagerAdapter
     private val detailViewModel: DetailViewModel by viewModels()
 
     override fun onCreateView(
@@ -51,8 +51,26 @@ class DetailFragment : Fragment() {
                 }
                 is GenericResult.Success -> {
                     CoinProgressDialog.close()
-                    binding.tabLayout.tabGravity = TabLayout.GRAVITY_FILL
-          
+
+                    pagerAdapter = ViewPagerAdapter(
+                        requireContext(),
+                        parentFragmentManager,
+                        tab_layout.tabCount
+                    )
+                    binding.viewPager.adapter = pagerAdapter
+                    binding.viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tab_layout))
+                   tab_layout.addOnTabSelectedListener(object :
+                        TabLayout.OnTabSelectedListener {
+                        override fun onTabSelected(tab: TabLayout.Tab?) {
+
+                                binding.viewPager.currentItem = tab!!.position
+
+                        }
+
+                        override fun onTabUnselected(tab: TabLayout.Tab?) {}
+
+                        override fun onTabReselected(tab: TabLayout.Tab?) {}
+                    })
                 }
 
                 is GenericResult.Failure -> {

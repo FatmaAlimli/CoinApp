@@ -11,22 +11,23 @@ import com.example.coinapp.ui.tabLayout.SocialFragment
 @Suppress("DEPRECATION")
 internal class ViewPagerAdapter(
     var context: Context,
-    fragmentManager: FragmentManager ,
+    fragmentManager: FragmentManager,
     var totalTabs: Int
 ) : FragmentPagerAdapter(fragmentManager) {
 
 
     override fun getItem(position: Int): Fragment {
-        when (position) {
+        return when (position) {
             0 -> {
 
-                return ProfilFragment()
+                ProfilFragment()
+
             }
             1 -> {
-                return SocialFragment()
+                SocialFragment()
             }
             2 -> {
-                return NewsFragment()
+                NewsFragment()
             }
             else -> getItem(position)
 

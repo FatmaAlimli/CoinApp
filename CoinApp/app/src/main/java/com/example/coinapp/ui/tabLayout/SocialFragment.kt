@@ -8,8 +8,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.example.coinapp.R
 import com.example.coinapp.databinding.FragmentSocialBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class SocialFragment : Fragment() {
 
     lateinit var binding: FragmentSocialBinding

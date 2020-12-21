@@ -23,18 +23,15 @@ import kotlinx.android.synthetic.main.fragment_detail.*
 @AndroidEntryPoint
 class DetailFragment : Fragment() {
 
-
     lateinit var binding: FragmentDetailBinding
     lateinit var tabLayout: TabLayout
     private val detailViewModel: DetailViewModel by viewModels()
-    var profilFragment: ProfilFragment? = ProfilFragment()
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail, container, false)
+        binding = FragmentDetailBinding.inflate(inflater)
         return binding.root
     }
 
@@ -51,43 +48,15 @@ class DetailFragment : Fragment() {
                 is GenericResult.Success -> {
                     CoinProgressDialog.close()
 
-
                     val pagerAdapter = ViewPagerAdapter(
                         this.requireContext(),
-                        parentFragmentManager,
+                        childFragmentManager,
                         tab_layout.tabCount,
                         coinDetail.data?.data?.coins?.find { coin -> coin.id == args.id }
                     )
                     binding.viewPager.adapter = pagerAdapter
-
-                    binding.viewPager.addOnPageChangeListener(
-                        TabLayout.TabLayoutOnPageChangeListener(
-                            tab_layout
-                        )
-                    )
-
                     binding.tabLayout.setupWithViewPager(binding.viewPager)
-//                    tab_layout.addOnTabSelectedListener(object :
-//                        TabLayout.OnTabSelectedListener {
-//                        override fun onTabSelected(tab: TabLayout.Tab?) {
-//
-//                            binding.viewPager.currentItem = tab!!.position
-//
-//                            var coin = coinDetail.data?.data?.coins?.first()
-//
-//                                (pagerAdapter.getItem(0)).let {
-//                                    if (coin != null) {
-//                                        profilFragment?.update(coin,id)
-//                                    }
-//                                }
-//
-//
-//                        }
-//
-//                        override fun onTabUnselected(tab: TabLayout.Tab?) {}
-//
-//                        override fun onTabReselected(tab: TabLayout.Tab?) {}
-//                    })
+
                 }
 
                 is GenericResult.Failure -> {

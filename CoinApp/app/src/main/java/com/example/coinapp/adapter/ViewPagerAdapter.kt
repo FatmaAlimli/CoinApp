@@ -17,16 +17,13 @@ internal class ViewPagerAdapter(
     val coin: Coin?
 ) : FragmentPagerAdapter(fragmentManager) {
 
-
     override fun getItem(position: Int): Fragment {
         when (position) {
             0 -> {
                 return ProfilFragment().apply {
-
                     this.coin = this@ViewPagerAdapter.coin
                     this.id = this@ViewPagerAdapter.coin?.id
                 }
-
             }
             1 -> {
                 return SocialFragment()

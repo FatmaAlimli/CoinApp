@@ -8,12 +8,16 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.example.coinapp.R
 import com.example.coinapp.databinding.FragmentProfilBinding
+import com.example.coinapp.models.Coin
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class ProfilFragment : Fragment() {
 
     lateinit var binding: FragmentProfilBinding
+    var coin: Coin? = null
+    var id: Int? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,6 +30,11 @@ class ProfilFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.textId.text = coin?.id.toString()
+        binding.textName.text = coin?.name
+        binding.textPrice.text = coin?.price
+        binding.textDescription.text = coin?.description
 
     }
 

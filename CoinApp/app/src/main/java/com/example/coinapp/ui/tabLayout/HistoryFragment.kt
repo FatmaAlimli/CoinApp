@@ -7,18 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.example.coinapp.R
-import com.example.coinapp.databinding.FragmentNewsBinding
+import com.example.coinapp.databinding.FragmentHistoryBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
+class HistoryFragment : Fragment() {
 
-class NewsFragment : Fragment() {
-
-    lateinit var binding: FragmentNewsBinding
-
+    lateinit var binding: FragmentHistoryBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_news, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_history, container, false)
         return binding.root
     }
 

@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.coinapp.api.GenericResult
 import com.example.coinapp.models.CoinModel
 import com.example.coinapp.repository.CoinRepository
+import com.example.coinapp.ui.tabLayout.ProfilFragment
 import kotlinx.coroutines.launch
 
 class DetailViewModel @ViewModelInject constructor(private val coinRepository: CoinRepository) :
@@ -24,6 +25,7 @@ class DetailViewModel @ViewModelInject constructor(private val coinRepository: C
             coinRepository.getCoinDetail(id).let { response ->
                 if (response.isSuccessful) {
                     coinDetailMutableLiveData.value = GenericResult.Success(response.body())
+
                 } else {
                     coinDetailMutableLiveData.value = GenericResult.Failure(response.errorBody())
                 }

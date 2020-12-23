@@ -26,10 +26,16 @@ internal class ViewPagerAdapter(
                 }
             }
             1 -> {
-                return SocialFragment()
+                return SocialFragment().apply {
+                    this.coin = this@ViewPagerAdapter.coin
+                    this.id = this@ViewPagerAdapter.coin?.id
+                }
             }
             2 -> {
-                return HistoryFragment()
+                return HistoryFragment().apply {
+                    this.coin = this@ViewPagerAdapter.coin
+                    this.id = this@ViewPagerAdapter.coin?.id
+                }
             }
             else -> {
                 return getItem(position)

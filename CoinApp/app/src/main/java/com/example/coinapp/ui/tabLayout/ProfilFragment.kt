@@ -31,7 +31,8 @@ class ProfilFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.textId.text = coin?.id.toString()
+        binding.coin = coin
+      //  binding.textId.text = coin?.id.toString()
         binding.textName.text = coin?.name
         binding.textPrice.text = coin?.price
         binding.textDescription.text = coin?.description

@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.example.coinapp.R
+import com.example.coinapp.adapter.SocialAdapter
 import com.example.coinapp.adapter.ViewPagerAdapter
 import com.example.coinapp.api.GenericResult
 import com.example.coinapp.databinding.FragmentDetailBinding

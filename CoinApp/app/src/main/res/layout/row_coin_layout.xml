@@ -3,13 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="coin"
             type="com.example.coinapp.models.Coin" />
     </data>
-
-
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_item_card_container"
@@ -27,7 +24,6 @@
                 android:id="@+id/imageView"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
                 app:loadCoinImage="@{coin.iconUrl}" />
 
